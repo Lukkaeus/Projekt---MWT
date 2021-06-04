@@ -1,0 +1,50 @@
+<div class="login-wrapper">
+  <form (ngSubmit)="onSubmit()" [formGroup]="userEditForm">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Edit user</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+
+        <mat-form-field><input matInput placeholder="username" name="name" formControlName="name" required/>
+          <mat-error *ngIf="name?.errors?.minlength">Username musi byt minimalne 3 znaky</mat-error>
+          <mat-error *ngIf="name?.errors?.required">Username musi byt vyplneny</mat-error>
+          <mat-error *ngIf="name?.errors?.conflictField">{{name.errors.conflictField}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field><input matInput placeholder="email" name="name" formControlName="email" required/>
+          <mat-error *ngIf="email?.errors?.email ||email?.errors?.pattern">Email musi byt v spravnom tvare</mat-error>
+          <mat-error *ngIf="email?.errors?.required">Email musi byt vyplneny</mat-error>
+          <mat-error *ngIf="email?.errors?.conflictField">{{name.errors.conflictField}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field><input matInput placeholder="password" formControlName="password"
+                               [type]="hide ? 'password':'text'"
+                               name="password">
+          <button type="button" matSuffix mat-icon-button aria-label="Hide password" (click)="hide = !hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field><input matInput placeholder="repeat password" formControlName="password2"
+                               [type]="hide ? 'password':'text'"
+                               name="password"/>
+          <mat-error *ngIf="password2?.errors?.differentPasswords">{{password2.errors.differentPasswords}}</mat-error>
+        </mat-form-field>
+        <div>
+          <mat-slide-toggle class="example-margin" formControlName="active" color="primary">Active</mat-slide-toggle>
+        </div>
+
+        <p>Groups</p>
+        <div formArrayName="groups">
+          <mat-checkbox *ngFor="let group of groupsCB.controls; let i =index"
+                        formControlName="{{i}}">{{groups[i].name}}</mat-checkbox>
+        </div>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit" [disabled]="userEditForm?.invalid">Save</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

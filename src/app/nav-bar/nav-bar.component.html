@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+    <span>
+        <a routerLink="/users/simple" routerLinkActive="mat-accent" mat-flat-button color="primary">Users</a>
+    </span>
+  <span>
+        <a routerLink="/users/extended" routerLinkActive="mat-accent" mat-flat-button color="primary">Extended users</a>
+    </span>
+  <span>
+        <a routerLink="/films" routerLinkActive="mat-accent" mat-flat-button color="primary">Films</a>
+    </span>
+  <span class="spacer"></span>
+  <span *ngIf="username; else elseBlock">
+        <button type="button" mat-flat-button color="primary" (click)="logout()">
+            <mat-icon>account_box</mat-icon> <b>{{ username }}</b> Logout
+        </button>
+    </span>
+  <ng-template #elseBlock>
+    <a routerLink="/login" routerLinkActive="mat-accent" mat-flat-button color="primary">
+      <mat-icon>account_box</mat-icon> Login
+    </a>
+    <a routerLink="/register" routerLinkActive="mat-accent" mat-flat-button color="primary">
+      <mat-icon>account_box</mat-icon> Register
+    </a>
+  </ng-template>
+</mat-toolbar>

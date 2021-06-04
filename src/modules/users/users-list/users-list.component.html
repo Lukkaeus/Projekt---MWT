@@ -1,0 +1,14 @@
+<ul>
+  <li *ngFor="let user of users" (click)="selectUser(user)">
+    {{user.name}}, {{user.email}}, {{user.id}}, {{user.lastLogin}}
+  </li>
+</ul>
+
+<p *ngIf="selectedUser">selected: {{selectedUser.name}}</p>
+
+<table mat-table [dataSource]="users">
+  <mat-text-column name="name" headerText="Name"></mat-text-column>
+  <mat-text-column name="email" headerText="E-mail"></mat-text-column>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+</table>

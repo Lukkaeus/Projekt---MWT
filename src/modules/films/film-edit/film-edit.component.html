@@ -1,0 +1,28 @@
+<mat-card class="block">
+    <form class="example-form" [formGroup]="filmEditForm" (ngSubmit)="onSubmit()">
+        <h3 style="color: darkgray">Movie information</h3>
+        <!--  Name  -->
+        <div>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Name" formControlName="filmName">
+            </mat-form-field>
+        </div>
+        <!--  Year  -->
+        <div>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Year" type="number" formControlName="year">
+            </mat-form-field>
+        </div>
+        <!--  Slovak name  -->
+        <div>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Slovak name" formControlName="slovakName">
+            </mat-form-field>
+        </div>
+        <br><br>
+        <!--    <br><br>-->
+        <button [disabled]="filmEditForm?.invalid" mat-raised-button type="submit" value="submit"
+                style="background: #44bd32;color: white">Save
+        </button>
+    </form>
+</mat-card>

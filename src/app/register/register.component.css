@@ -1,0 +1,24 @@
+.login-wrapper {
+  width: 100%;
+  height: 80%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+mat-card-title {
+  display: flex;
+  justify-content: center;
+}
+
+mat-form-field {
+  display: block;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+}
+.psswd1{
+  margin-bottom: 15px;
+}
